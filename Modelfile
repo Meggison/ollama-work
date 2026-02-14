@@ -1,0 +1,26 @@
+# Modelfile for gpt-oss:120b-cloud
+# Build with: ollama create my-custom-model -f Modelfile
+
+FROM gpt-oss:120b-cloud
+
+# Set the temperature (0.0-2.0, higher = more creative)
+PARAMETER temperature 0.7
+
+# Set the context window size
+PARAMETER num_ctx 4096
+
+# Set top-p sampling (0.0-1.0)
+PARAMETER top_p 0.9
+
+# Set top-k sampling
+PARAMETER top_k 40
+
+# Set the system prompt
+SYSTEM """
+You are a helpful AI assistant. You provide clear, accurate, and concise responses.
+"""
+
+# Set the prompt template
+TEMPLATE """{{ .System }}
+
+{{ .Prompt }}"""
